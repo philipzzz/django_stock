@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	{% if ticker2 %}
+		{{ ticker2 }}
+	{% endif %}
+
+	{% if api %}
+		{% if api == "Error..." %}
+			Error .. Please check again your ticker symbol ...
+		
+		{% else %}
+			<h1>{{ api.companyName }}</h1>
+			<h2> Lastest Price : USD {{ api.latestPrice }} <br/></h2>
+			52 Weeks High : USD {{ api.week52High }} <br/>
+			52 Weeks Low : USD {{ api.week52Low }} <br/>
+
+			{% for key1, value2 in api.items %}
+			{{key1}} : {{value2}} <br/>
+			{% endfor %}
+		{% endif %}
+
+	{% endif %}
+
+<br/>
+
+{% endblock %}
